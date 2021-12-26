@@ -7,23 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C02486EAC3922D87029E519 /* Pods_OliNeedJun.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C22FF0B81B860AB1C762C525 /* Pods_OliNeedJun.framework */; };
+		720064222778593300F27698 /* SplashViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720064212778593300F27698 /* SplashViewModel.swift */; };
+		72006425277859A900F27698 /* ViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72006424277859A900F27698 /* ViewModelProtocol.swift */; };
+		72006427277859F000F27698 /* CommonEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72006426277859F000F27698 /* CommonEnum.swift */; };
+		7200642927785A7700F27698 /* OilMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7200642827785A7700F27698 /* OilMapViewController.swift */; };
+		7200642B27785E2B00F27698 /* OilMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7200642A27785E2B00F27698 /* OilMapView.swift */; };
+		7200642D27785E4C00F27698 /* OilMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7200642C27785E4C00F27698 /* OilMapViewModel.swift */; };
+		720247E427784F8400AA1B61 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720247E327784F8400AA1B61 /* SplashView.swift */; };
+		7239E0552778785700D463C1 /* PermisisionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7239E0542778785700D463C1 /* PermisisionCheck.swift */; };
+		7239E05727787DE300D463C1 /* SeoulLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 7239E05627787DE300D463C1 /* SeoulLocation.gpx */; };
 		72AB0AC527784A36004F1EB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AB0AC427784A36004F1EB1 /* AppDelegate.swift */; };
-		72AB0AC727784A36004F1EB1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AB0AC627784A36004F1EB1 /* SceneDelegate.swift */; };
-		72AB0AC927784A36004F1EB1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AB0AC827784A36004F1EB1 /* ViewController.swift */; };
-		72AB0ACC27784A36004F1EB1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72AB0ACA27784A36004F1EB1 /* Main.storyboard */; };
+		72AB0AC927784A36004F1EB1 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AB0AC827784A36004F1EB1 /* SplashViewController.swift */; };
 		72AB0ACE27784A37004F1EB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72AB0ACD27784A37004F1EB1 /* Assets.xcassets */; };
 		72AB0AD127784A37004F1EB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72AB0ACF27784A37004F1EB1 /* LaunchScreen.storyboard */; };
+		72AB0ADC27784DE5004F1EB1 /* BaseClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AB0ADB27784DE5004F1EB1 /* BaseClasses.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1145543EEECACF4FCF8F80C8 /* Pods-OliNeedJun.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OliNeedJun.debug.xcconfig"; path = "Target Support Files/Pods-OliNeedJun/Pods-OliNeedJun.debug.xcconfig"; sourceTree = "<group>"; };
+		720064212778593300F27698 /* SplashViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewModel.swift; sourceTree = "<group>"; };
+		72006424277859A900F27698 /* ViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelProtocol.swift; sourceTree = "<group>"; };
+		72006426277859F000F27698 /* CommonEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonEnum.swift; sourceTree = "<group>"; };
+		7200642827785A7700F27698 /* OilMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilMapViewController.swift; sourceTree = "<group>"; };
+		7200642A27785E2B00F27698 /* OilMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilMapView.swift; sourceTree = "<group>"; };
+		7200642C27785E4C00F27698 /* OilMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilMapViewModel.swift; sourceTree = "<group>"; };
+		720247E327784F8400AA1B61 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
+		7239E0542778785700D463C1 /* PermisisionCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermisisionCheck.swift; sourceTree = "<group>"; };
+		7239E05627787DE300D463C1 /* SeoulLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SeoulLocation.gpx; path = ../AccountBook/SeoulLocation.gpx; sourceTree = "<group>"; };
 		72AB0AC127784A36004F1EB1 /* OliNeedJun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OliNeedJun.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72AB0AC427784A36004F1EB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		72AB0AC627784A36004F1EB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		72AB0AC827784A36004F1EB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		72AB0ACB27784A36004F1EB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		72AB0AC827784A36004F1EB1 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		72AB0ACD27784A37004F1EB1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		72AB0AD027784A37004F1EB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72AB0AD227784A37004F1EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		72AB0ADB27784DE5004F1EB1 /* BaseClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseClasses.swift; sourceTree = "<group>"; };
+		8A510CCCBA727E21714A7BB4 /* Pods-OliNeedJun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OliNeedJun.release.xcconfig"; path = "Target Support Files/Pods-OliNeedJun/Pods-OliNeedJun.release.xcconfig"; sourceTree = "<group>"; };
+		C22FF0B81B860AB1C762C525 /* Pods_OliNeedJun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OliNeedJun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +51,45 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C02486EAC3922D87029E519 /* Pods_OliNeedJun.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18C56DDD9FB4BFED4D26ECAA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C22FF0B81B860AB1C762C525 /* Pods_OliNeedJun.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		720064232778599200F27698 /* protocols */ = {
+			isa = PBXGroup;
+			children = (
+				72006424277859A900F27698 /* ViewModelProtocol.swift */,
+			);
+			path = protocols;
+			sourceTree = "<group>";
+		};
+		7239E0532778784600D463C1 /* permission */ = {
+			isa = PBXGroup;
+			children = (
+				7239E0542778785700D463C1 /* PermisisionCheck.swift */,
+			);
+			path = permission;
+			sourceTree = "<group>";
+		};
 		72AB0AB827784A36004F1EB1 = {
 			isa = PBXGroup;
 			children = (
+				7239E05627787DE300D463C1 /* SeoulLocation.gpx */,
 				72AB0AC327784A36004F1EB1 /* OliNeedJun */,
 				72AB0AC227784A36004F1EB1 /* Products */,
+				965B6F7BD7B3D1A3D260D2B3 /* Pods */,
+				18C56DDD9FB4BFED4D26ECAA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +104,55 @@
 		72AB0AC327784A36004F1EB1 /* OliNeedJun */ = {
 			isa = PBXGroup;
 			children = (
+				720064232778599200F27698 /* protocols */,
+				7239E0532778784600D463C1 /* permission */,
+				72AB0ADA27784B51004F1EB1 /* bases */,
+				72AB0AD927784B45004F1EB1 /* oil_map */,
+				72AB0AD827784B39004F1EB1 /* splash */,
 				72AB0AC427784A36004F1EB1 /* AppDelegate.swift */,
-				72AB0AC627784A36004F1EB1 /* SceneDelegate.swift */,
-				72AB0AC827784A36004F1EB1 /* ViewController.swift */,
-				72AB0ACA27784A36004F1EB1 /* Main.storyboard */,
 				72AB0ACD27784A37004F1EB1 /* Assets.xcassets */,
 				72AB0ACF27784A37004F1EB1 /* LaunchScreen.storyboard */,
 				72AB0AD227784A37004F1EB1 /* Info.plist */,
 			);
 			path = OliNeedJun;
+			sourceTree = "<group>";
+		};
+		72AB0AD827784B39004F1EB1 /* splash */ = {
+			isa = PBXGroup;
+			children = (
+				72AB0AC827784A36004F1EB1 /* SplashViewController.swift */,
+				720247E327784F8400AA1B61 /* SplashView.swift */,
+				720064212778593300F27698 /* SplashViewModel.swift */,
+			);
+			path = splash;
+			sourceTree = "<group>";
+		};
+		72AB0AD927784B45004F1EB1 /* oil_map */ = {
+			isa = PBXGroup;
+			children = (
+				7200642827785A7700F27698 /* OilMapViewController.swift */,
+				7200642A27785E2B00F27698 /* OilMapView.swift */,
+				7200642C27785E4C00F27698 /* OilMapViewModel.swift */,
+			);
+			path = oil_map;
+			sourceTree = "<group>";
+		};
+		72AB0ADA27784B51004F1EB1 /* bases */ = {
+			isa = PBXGroup;
+			children = (
+				72AB0ADB27784DE5004F1EB1 /* BaseClasses.swift */,
+				72006426277859F000F27698 /* CommonEnum.swift */,
+			);
+			path = bases;
+			sourceTree = "<group>";
+		};
+		965B6F7BD7B3D1A3D260D2B3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1145543EEECACF4FCF8F80C8 /* Pods-OliNeedJun.debug.xcconfig */,
+				8A510CCCBA727E21714A7BB4 /* Pods-OliNeedJun.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +162,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 72AB0AD527784A37004F1EB1 /* Build configuration list for PBXNativeTarget "OliNeedJun" */;
 			buildPhases = (
+				CF480BF9004C4010857CB062 /* [CP] Check Pods Manifest.lock */,
 				72AB0ABD27784A36004F1EB1 /* Sources */,
 				72AB0ABE27784A36004F1EB1 /* Frameworks */,
 				72AB0ABF27784A36004F1EB1 /* Resources */,
+				6D241D0B3CA803DCFD6B4412 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,34 +217,76 @@
 			files = (
 				72AB0AD127784A37004F1EB1 /* LaunchScreen.storyboard in Resources */,
 				72AB0ACE27784A37004F1EB1 /* Assets.xcassets in Resources */,
-				72AB0ACC27784A36004F1EB1 /* Main.storyboard in Resources */,
+				7239E05727787DE300D463C1 /* SeoulLocation.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6D241D0B3CA803DCFD6B4412 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OliNeedJun/Pods-OliNeedJun-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-OliNeedJun/Pods-OliNeedJun-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-OliNeedJun/Pods-OliNeedJun-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CF480BF9004C4010857CB062 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-OliNeedJun-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		72AB0ABD27784A36004F1EB1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72AB0AC927784A36004F1EB1 /* ViewController.swift in Sources */,
+				7200642B27785E2B00F27698 /* OilMapView.swift in Sources */,
+				720064222778593300F27698 /* SplashViewModel.swift in Sources */,
+				7200642D27785E4C00F27698 /* OilMapViewModel.swift in Sources */,
+				72AB0AC927784A36004F1EB1 /* SplashViewController.swift in Sources */,
+				7239E0552778785700D463C1 /* PermisisionCheck.swift in Sources */,
+				72006425277859A900F27698 /* ViewModelProtocol.swift in Sources */,
+				720247E427784F8400AA1B61 /* SplashView.swift in Sources */,
+				72AB0ADC27784DE5004F1EB1 /* BaseClasses.swift in Sources */,
+				72006427277859F000F27698 /* CommonEnum.swift in Sources */,
+				7200642927785A7700F27698 /* OilMapViewController.swift in Sources */,
 				72AB0AC527784A36004F1EB1 /* AppDelegate.swift in Sources */,
-				72AB0AC727784A36004F1EB1 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		72AB0ACA27784A36004F1EB1 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				72AB0ACB27784A36004F1EB1 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		72AB0ACF27784A37004F1EB1 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -284,6 +416,7 @@
 		};
 		72AB0AD627784A37004F1EB1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1145543EEECACF4FCF8F80C8 /* Pods-OliNeedJun.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -294,7 +427,6 @@
 				INFOPLIST_FILE = OliNeedJun/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -312,6 +444,7 @@
 		};
 		72AB0AD727784A37004F1EB1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A510CCCBA727E21714A7BB4 /* Pods-OliNeedJun.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -322,7 +455,6 @@
 				INFOPLIST_FILE = OliNeedJun/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
