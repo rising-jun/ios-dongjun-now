@@ -16,12 +16,13 @@ final class OilMapViewModel: ViewModelType{
     var output: Output?
     
     private let state = BehaviorRelay<OilMapState>(value: OilMapState())
+    private let readGasStation = ReadGasStation()
     
     struct Input{
         let viewState: Observable<ViewState>?
         let locState: Observable<CLAuthorizationStatus>?
         let coorState: Observable<CLLocationCoordinate2D>?
-        
+        let userPosAction: Observable<Void>?
     }
     
     struct Output{
@@ -29,15 +30,21 @@ final class OilMapViewModel: ViewModelType{
     }
     
     private let disposeBag = DisposeBag()
+    private let gasStationList = PublishSubject<[GasStationInfo]>()
     
     func bind(input: Input) -> Output{
         self.input = input
 
         input.viewState?
             .filter{$0 == .viewDidLoad}
-            .withLatestFrom(state){ viewState, state -> OilMapState in
+            .withLatestFrom(state){ [weak self] viewState, state -> OilMapState in
+                
                 var newState = state
                 newState.viewLogic = .setUpView
+                
+                self!.readGasStation.gasListSubject = self!.gasStationList
+                self!.readGasStation.makeGasStationList()
+                
                 return newState
             }.bind(to: self.state)
             .disposed(by: disposeBag)
@@ -64,12 +71,32 @@ final class OilMapViewModel: ViewModelType{
             .withLatestFrom(state){ coor, state -> OilMapState in
                 var newState = state
                 newState.coordi = coor
-//                newState.writeObject.lat = coor.latitude
-//                newState.writeObject.long = coor.longitude
                 return newState
             }.bind(to: self.state)
             .disposed(by: disposeBag)
         
+        input.userPosAction?
+            .withLatestFrom(state)
+            .map{ state in
+                print("hi")
+                var newState = state
+                if newState.userLocationMode == .direction{
+                    newState.userLocationMode = .compass
+                }else{
+                    newState.userLocationMode = .direction
+                }
+                return newState
+            }
+            .bind(to: self.state)
+            .disposed(by: disposeBag)
+        
+        gasStationList
+            .withLatestFrom(state){ list, state -> OilMapState in
+                var newState = state
+                newState.gsList = list
+                return newState
+            }.bind(to: self.state)
+            .disposed(by: disposeBag)
         
         output = Output(state: state.asDriver())
         return output!
@@ -87,9 +114,16 @@ struct OilMapState{
     var locationPermission: PermissionState?
     var coordi: CLLocationCoordinate2D?
     
+    var userLocationMode: UserPositionMode? = .direction
+    var gsList: [GasStationInfo] = []
 }
 
 enum PossibleCheck{
     case possible
     case impossible
+}
+
+enum UserPositionMode{
+    case direction
+    case compass
 }

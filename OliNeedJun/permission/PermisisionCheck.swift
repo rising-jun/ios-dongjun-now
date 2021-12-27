@@ -42,6 +42,7 @@ extension PermissionCheck: CLLocationManagerDelegate{
         
     }
     
+    
 }
 
 enum PermissionState{
