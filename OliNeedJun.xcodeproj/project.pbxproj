@@ -15,7 +15,7 @@
 		7200642B27785E2B00F27698 /* OilMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7200642A27785E2B00F27698 /* OilMapView.swift */; };
 		7200642D27785E4C00F27698 /* OilMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7200642C27785E4C00F27698 /* OilMapViewModel.swift */; };
 		720247E427784F8400AA1B61 /* SplashView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 720247E327784F8400AA1B61 /* SplashView.swift */; };
-		72361B392778977F002A0D5E /* CustomMapDelegatge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72361B382778977F002A0D5E /* CustomMapDelegatge.swift */; };
+		72361B392778977F002A0D5E /* CustomOverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72361B382778977F002A0D5E /* CustomOverlayDataSource.swift */; };
 		7239E0552778785700D463C1 /* PermisisionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7239E0542778785700D463C1 /* PermisisionCheck.swift */; };
 		7239E05727787DE300D463C1 /* SeoulLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 7239E05627787DE300D463C1 /* SeoulLocation.gpx */; };
 		728C6348277998E6003DDC4C /*  GasStationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728C6347277998E6003DDC4C /*  GasStationInfo.swift */; };
@@ -25,6 +25,7 @@
 		72AB0ACE27784A37004F1EB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72AB0ACD27784A37004F1EB1 /* Assets.xcassets */; };
 		72AB0AD127784A37004F1EB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72AB0ACF27784A37004F1EB1 /* LaunchScreen.storyboard */; };
 		72AB0ADC27784DE5004F1EB1 /* BaseClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AB0ADB27784DE5004F1EB1 /* BaseClasses.swift */; };
+		72ED3774277B26650021B68B /* NaverMapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ED3773277B26650021B68B /* NaverMapDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,7 +37,7 @@
 		7200642A27785E2B00F27698 /* OilMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilMapView.swift; sourceTree = "<group>"; };
 		7200642C27785E4C00F27698 /* OilMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilMapViewModel.swift; sourceTree = "<group>"; };
 		720247E327784F8400AA1B61 /* SplashView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashView.swift; sourceTree = "<group>"; };
-		72361B382778977F002A0D5E /* CustomMapDelegatge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMapDelegatge.swift; sourceTree = "<group>"; };
+		72361B382778977F002A0D5E /* CustomOverlayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOverlayDataSource.swift; sourceTree = "<group>"; };
 		7239E0542778785700D463C1 /* PermisisionCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermisisionCheck.swift; sourceTree = "<group>"; };
 		7239E05627787DE300D463C1 /* SeoulLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SeoulLocation.gpx; path = ../AccountBook/SeoulLocation.gpx; sourceTree = "<group>"; };
 		728C6347277998E6003DDC4C /*  GasStationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " GasStationInfo.swift"; sourceTree = "<group>"; };
@@ -48,6 +49,7 @@
 		72AB0AD027784A37004F1EB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72AB0AD227784A37004F1EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72AB0ADB27784DE5004F1EB1 /* BaseClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseClasses.swift; sourceTree = "<group>"; };
+		72ED3773277B26650021B68B /* NaverMapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapDelegate.swift; sourceTree = "<group>"; };
 		8A510CCCBA727E21714A7BB4 /* Pods-OliNeedJun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OliNeedJun.release.xcconfig"; path = "Target Support Files/Pods-OliNeedJun/Pods-OliNeedJun.release.xcconfig"; sourceTree = "<group>"; };
 		C22FF0B81B860AB1C762C525 /* Pods_OliNeedJun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OliNeedJun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -83,7 +85,8 @@
 		72361B372778976E002A0D5E /* map_delegate */ = {
 			isa = PBXGroup;
 			children = (
-				72361B382778977F002A0D5E /* CustomMapDelegatge.swift */,
+				72361B382778977F002A0D5E /* CustomOverlayDataSource.swift */,
+				72ED3773277B26650021B68B /* NaverMapDelegate.swift */,
 			);
 			path = map_delegate;
 			sourceTree = "<group>";
@@ -306,8 +309,9 @@
 				7200642B27785E2B00F27698 /* OilMapView.swift in Sources */,
 				720064222778593300F27698 /* SplashViewModel.swift in Sources */,
 				7200642D27785E4C00F27698 /* OilMapViewModel.swift in Sources */,
+				72ED3774277B26650021B68B /* NaverMapDelegate.swift in Sources */,
 				72AB0AC927784A36004F1EB1 /* SplashViewController.swift in Sources */,
-				72361B392778977F002A0D5E /* CustomMapDelegatge.swift in Sources */,
+				72361B392778977F002A0D5E /* CustomOverlayDataSource.swift in Sources */,
 				7239E0552778785700D463C1 /* PermisisionCheck.swift in Sources */,
 				728C634B27799F0D003DDC4C /* ReadGasStation.swift in Sources */,
 				72006425277859A900F27698 /* ViewModelProtocol.swift in Sources */,

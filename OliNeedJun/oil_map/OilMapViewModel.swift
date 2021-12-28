@@ -23,6 +23,8 @@ final class OilMapViewModel: ViewModelType{
         let locState: Observable<CLAuthorizationStatus>?
         let coorState: Observable<CLLocationCoordinate2D>?
         let userPosAction: Observable<Void>?
+        let touchedGasStation: Observable<Int>?
+        let mapTouched: Observable<Void>?
     }
     
     struct Output{
@@ -31,6 +33,7 @@ final class OilMapViewModel: ViewModelType{
     
     private let disposeBag = DisposeBag()
     private let gasStationList = PublishSubject<[GasStationInfo]>()
+    
     
     func bind(input: Input) -> Output{
         self.input = input
@@ -90,6 +93,23 @@ final class OilMapViewModel: ViewModelType{
             .bind(to: self.state)
             .disposed(by: disposeBag)
         
+        input.touchedGasStation?
+            .withLatestFrom(state){ index, state -> OilMapState in
+                var newState = state
+                newState.mapViewMode = .viewGasStation
+                newState.gsTouchedIndex = index
+                return newState
+            }.bind(to: self.state)
+            .disposed(by: disposeBag)
+        
+        input.mapTouched?
+            .withLatestFrom(state){ index, state -> OilMapState in
+            var newState = state
+            newState.mapViewMode = .viewMap
+            return newState
+        }.bind(to: self.state)
+        .disposed(by: disposeBag)
+        
         gasStationList
             .withLatestFrom(state){ list, state -> OilMapState in
                 var newState = state
@@ -113,9 +133,10 @@ struct OilMapState{
     var viewLogic: ViewLogic?
     var locationPermission: PermissionState?
     var coordi: CLLocationCoordinate2D?
-    
+    var gsTouchedIndex: Int?
     var userLocationMode: UserPositionMode? = .direction
     var gsList: [GasStationInfo] = []
+    var mapViewMode: MapViewMode? = .viewGasStation
 }
 
 enum PossibleCheck{
@@ -126,4 +147,9 @@ enum PossibleCheck{
 enum UserPositionMode{
     case direction
     case compass
+}
+
+enum MapViewMode{
+    case viewMap
+    case viewGasStation
 }

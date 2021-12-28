@@ -19,7 +19,10 @@ class ReadGasStation{
             var gsInfo = GasStationInfo()
             gsInfo.price = Int.random(in: 1600 ..< 1801)
             gsInfo.name = "제\(i)주유소"
-            gsInfo.scroe = Double.random(in: 3.0 ..< 5.0)
+            gsInfo.score = Double.random(in: 3.0 ..< 5.0)
+            gsInfo.score *= 10
+            gsInfo.score = round(gsInfo.score)
+            gsInfo.score /= 10
             gsInfo.lat = locList[i][0]
             gsInfo.long = locList[i][1]
             if(i % 3 == 0){

@@ -16,3 +16,8 @@ enum ViewState{
     case viewDidLoad
     case viewWillAppear
 }
+
+enum ClusterLevel{
+    case DetailGasStation
+    case onlyIcon
+}
