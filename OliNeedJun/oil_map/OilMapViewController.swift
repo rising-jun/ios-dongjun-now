@@ -24,6 +24,9 @@ class OilMapViewController: BaseViewController{
     private let overlayDataSource = CustomOverlayDataSource()
     private let mapDelegate = NaverMapDelegate()
     private var gasStationList: [GasStationInfo] = []
+    private var detailMarkerArr: [NMFMarker] = []
+    private var iconMarkerArr: [NMFMarker] = []
+    
     
     override func setup() {
         super.setup()
@@ -39,16 +42,18 @@ class OilMapViewController: BaseViewController{
     
     private let locStatusSubject = BehaviorSubject<CLAuthorizationStatus>(value: .notDetermined)
     private let coordiSubject = BehaviorSubject<CLLocationCoordinate2D>(value: CLLocationCoordinate2D())
-    private let infoWindowTouched = BehaviorSubject<Int>(value: -1)
+    private let markerTouched = BehaviorSubject<Int>(value: -1)
     private let mapTouched = PublishSubject<Void>()
+    private let clusterMode = PublishSubject<ClusterLevel>()
     
     lazy var viewModel = OilMapViewModel()
     lazy var input = OilMapViewModel.Input(viewState: rx.viewDidLoad.map{ViewState.viewDidLoad},
                                            locState: locStatusSubject.distinctUntilChanged().asObservable().observe(on:MainScheduler.asyncInstance),
                                            coorState: coordiSubject.filter{$0.latitude != 0.0}.asObservable().observe(on:MainScheduler.asyncInstance),
                                            userPosAction: v.userLocationView.rx.tap.asObservable(),
-                                           touchedGasStation: infoWindowTouched.asObserver(),
-                                           mapTouched: mapTouched.asObservable())
+                                           touchedGasStation: markerTouched.asObserver(),
+                                           mapTouched: mapTouched.asObservable(),
+                                           clusterMode: clusterMode.distinctUntilChanged().asObservable())
     lazy var output = viewModel.bind(input: input)
     
     override func bindViewModel() {
@@ -78,7 +83,7 @@ class OilMapViewController: BaseViewController{
                 if let loc = self.locationManager.location{
                     self.initMap(coor: loc.coordinate)
                 }
-
+                
                 break
             case .requestPermission:
                 self.locationManager.requestWhenInUseAuthorization()
@@ -98,7 +103,6 @@ class OilMapViewController: BaseViewController{
         .distinctUntilChanged()
         .drive(onNext: { [weak self] positionMode in
             guard let self = self else { return }
-            print("position \(positionMode)")
             if positionMode == .direction{
                 self.v.mapView.mapView.positionMode = .direction
             }else{
@@ -110,7 +114,6 @@ class OilMapViewController: BaseViewController{
         .filter{$0.count > 0}
         .drive(onNext: { [weak self] list in
             guard let self = self else { return }
-            print("viewController gasStation Info \(list.count)")
             self.gasStationList = list
             self.setGasStations()
         }).disposed(by: disposeBag)
@@ -146,12 +149,23 @@ class OilMapViewController: BaseViewController{
             if let coor = coordi{
                 
             }
+            
         }).disposed(by: disposeBag)
         
-        
+        output.state?.map{$0.clusterMode}
+        .drive(onNext: { [weak self] clusterMode in
+            guard let self = self else { return }
+            if clusterMode == .DetailGasStation{
+                self.showDetailMarker()
+                self.hideIconMarker()
+            }else if clusterMode == .onlyIcon{
+                self.showIconMarker()
+                self.hideDetailMarker()
+            }
+        })
         
     }
-
+    
     
     
 }
@@ -162,39 +176,57 @@ extension OilMapViewController{
         locationManager.delegate = permissionCheck
         permissionCheck.getLocationPermission()
         v.mapView.mapView.touchDelegate = mapDelegate
+        v.mapView.mapView.addCameraDelegate(delegate: mapDelegate)
         mapDelegate.mapDidTap = mapTouched
+        mapDelegate.clusterMode = clusterMode
     }
     
     func initMap(coor: CLLocationCoordinate2D){
+        
         let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: coor.latitude ?? 0, lng: coor.longitude ?? 0))
         cameraUpdate.animation = .easeIn
         v.mapView.mapView.moveCamera(cameraUpdate)
-        v.mapView.mapView.positionMode = .direction
     }
     
+    
     func setGasStations(){
+        var markImage = GasStationMarker()
         for i in 0 ..< gasStationList.count{
             let info = gasStationList[i]
-            let infoWindow = NMFInfoWindow()
-            infoWindow.dataSource = self.overlayDataSource
-            self.overlayDataSource.clusterLevel = .DetailGasStation
-            self.overlayDataSource.imageView.image = info.gasIcon
-            self.overlayDataSource.priceLabel.text = info.price.withComma
-            infoWindow.position = NMGLatLng(lat: info.lat, lng: info.long)
-            infoWindow.globalZIndex = 20001
-            infoWindow.open(with: self.v.mapView.mapView)
-            infoWindow.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+            var marker = NMFMarker()
+            markImage.markerKind = .DetailGasStation
+            marker.position = NMGLatLng(lat: info.lat, lng: info.long)
+            marker.mapView = v.mapView.mapView
+            markImage.setDatas(image: info.gasIcon, text: info.price.withComma)
+            marker.iconImage = NMFOverlayImage(image: markImage.makeMarker())
+            marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
                 self?.setGasStationInfo(i: info)
-                self?.infoWindowTouched.onNext(i)
+                self?.markerTouched.onNext(i)
                 return true
             };
+            detailMarkerArr.append(marker)
         }
+        var markIcon = GasStationMarker()
+        for i in 0 ..< gasStationList.count{
+            let info = gasStationList[i]
+            var marker = NMFMarker()
+            markIcon.markerKind = .onlyIcon
+            marker.position = NMGLatLng(lat: info.lat, lng: info.long)
+            marker.mapView = v.mapView.mapView
+            markIcon.setDatas(image: info.gasIcon, text: info.price.withComma)
+            marker.iconImage = NMFOverlayImage(image: markIcon.makeMarker())
+            marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
+                self?.setGasStationInfo(i: info)
+                self?.markerTouched.onNext(i)
+                return true
+            };
+            iconMarkerArr.append(marker)
+        }
+        
         if gasStationList.count > 0{
             setGasStationInfo(i: gasStationList.first!)
-            let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: gasStationList.first!.lat, lng: gasStationList.first!.long))
-            cameraUpdate.animation = .easeIn
-            v.mapView.mapView.moveCamera(cameraUpdate)
         }
+        
     }
     
     func setGasStationInfo(i: GasStationInfo){
@@ -202,6 +234,31 @@ extension OilMapViewController{
         v.infoName.text = i.name
         v.infoScore.text = "\(i.score)"
         v.gasPriceLabel.text = i.price.withComma
+    }
+    
+    
+    func hideDetailMarker(){
+        for marker in detailMarkerArr{
+            marker.hidden = true
+        }
+    }
+    
+    func hideIconMarker(){
+        for marker in iconMarkerArr{
+            marker.hidden = true
+        }
+    }
+    
+    func showDetailMarker(){
+        for marker in detailMarkerArr{
+            marker.hidden = false
+        }
+    }
+    
+    func showIconMarker(){
+        for marker in iconMarkerArr{
+            marker.hidden = false
+        }
     }
     
 }
@@ -212,8 +269,7 @@ extension OilMapViewController: LocationPermissionCallback{
     }
     
     func getPoint(coordinate: CLLocationCoordinate2D) {
-        //print("getpoint!! \(coordinate.latitude)")
-        //coordiSubject.onNext(coordinate)
+        
     }
     
     

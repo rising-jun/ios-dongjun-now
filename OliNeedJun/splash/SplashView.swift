@@ -41,5 +41,7 @@ class SplashView: BaseView{
             make.centerX.equalTo(self)
         }
     }
+    
+    
 }
 //rgb(75, 118, 186)

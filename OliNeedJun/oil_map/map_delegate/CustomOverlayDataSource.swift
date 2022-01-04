@@ -14,6 +14,7 @@ class CustomOverlayDataSource: NSObject{
     let imageView = UIImageView()
     let priceLabel = UILabel()
     var clusterLevel: ClusterLevel = .DetailGasStation
+    var markerKind: ClusterLevel = .DetailGasStation
     var selected: Bool = false
 }
 
@@ -22,7 +23,7 @@ extension CustomOverlayDataSource: NMFOverlayImageDataSource{
     
     func view(with overlay: NMFOverlay) -> UIView {
         
-        if clusterLevel == .DetailGasStation{
+        if markerKind == .DetailGasStation{
             var v = UIView(frame: CGRect(x: 0, y: 0, width: 70, height: 30))
             v.addSubViews(imageView, priceLabel)
             
@@ -41,12 +42,11 @@ extension CustomOverlayDataSource: NMFOverlayImageDataSource{
             }
             
             return v
-        }else if clusterLevel == .onlyIcon{
+        }else if markerKind == .onlyIcon{
             var v = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
             v.addSubViews(imageView)
             imageView.frame = CGRect(x: 5, y: 5, width: 20, height: 20)
             imageView.contentMode = .scaleAspectFit
-            
         }
         
         return UIView()

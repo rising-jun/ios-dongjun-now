@@ -25,6 +25,7 @@
 		72AB0ACE27784A37004F1EB1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72AB0ACD27784A37004F1EB1 /* Assets.xcassets */; };
 		72AB0AD127784A37004F1EB1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 72AB0ACF27784A37004F1EB1 /* LaunchScreen.storyboard */; };
 		72AB0ADC27784DE5004F1EB1 /* BaseClasses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AB0ADB27784DE5004F1EB1 /* BaseClasses.swift */; };
+		72E6F0EF2780568500C71B41 /* GasStationMarker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72E6F0EE2780568500C71B41 /* GasStationMarker.swift */; };
 		72ED3774277B26650021B68B /* NaverMapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72ED3773277B26650021B68B /* NaverMapDelegate.swift */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		72AB0AD027784A37004F1EB1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		72AB0AD227784A37004F1EB1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72AB0ADB27784DE5004F1EB1 /* BaseClasses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseClasses.swift; sourceTree = "<group>"; };
+		72E6F0EE2780568500C71B41 /* GasStationMarker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasStationMarker.swift; sourceTree = "<group>"; };
 		72ED3773277B26650021B68B /* NaverMapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaverMapDelegate.swift; sourceTree = "<group>"; };
 		8A510CCCBA727E21714A7BB4 /* Pods-OliNeedJun.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OliNeedJun.release.xcconfig"; path = "Target Support Files/Pods-OliNeedJun/Pods-OliNeedJun.release.xcconfig"; sourceTree = "<group>"; };
 		C22FF0B81B860AB1C762C525 /* Pods_OliNeedJun.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OliNeedJun.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -87,6 +89,7 @@
 			children = (
 				72361B382778977F002A0D5E /* CustomOverlayDataSource.swift */,
 				72ED3773277B26650021B68B /* NaverMapDelegate.swift */,
+				72E6F0EE2780568500C71B41 /* GasStationMarker.swift */,
 			);
 			path = map_delegate;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72E6F0EF2780568500C71B41 /* GasStationMarker.swift in Sources */,
 				7200642B27785E2B00F27698 /* OilMapView.swift in Sources */,
 				720064222778593300F27698 /* SplashViewModel.swift in Sources */,
 				7200642D27785E4C00F27698 /* OilMapViewModel.swift in Sources */,
