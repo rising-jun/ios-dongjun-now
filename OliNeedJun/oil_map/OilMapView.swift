@@ -60,10 +60,14 @@ class OilMapView: BaseView{
         $0.textAlignment = .right
     }
     
+    var infoCV: UICollectionView!
+    
     override func setup() {
         super.setup()
-        
-        addSubViews(mapView, userLocationView, infoView)
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+        infoCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        addSubViews(mapView, userLocationView, infoCV)
         
         userLocationView.mapView = mapView.mapView
         
@@ -71,56 +75,64 @@ class OilMapView: BaseView{
             make.height.width.equalTo(self)
         }
         
-        infoView.snp.remakeConstraints { make in
+        infoCV.backgroundColor = .white
+        infoCV.isPagingEnabled = true
+        infoCV.snp.makeConstraints { make in
             make.bottom.equalTo(self)
             make.height.equalTo(130)
             make.width.equalTo(self)
         }
         
-        infoView.addSubViews(infoIcon, infoName, starIcon, infoScore, gasKindsLabel, gasPriceLabel)
-        infoIcon.snp.remakeConstraints { make in
-            make.top.equalTo(infoView.snp.top).offset(20)
-            make.leading.equalTo(infoView).offset(25)
-            make.width.height.equalTo(25)
-        }
-        
-        infoName.snp.remakeConstraints { make in
-            make.leading.equalTo(infoIcon.snp.trailing).offset(15)
-            make.width.equalTo(240)
-            make.height.equalTo(50)
-            make.centerY.equalTo(infoIcon)
-        }
-        
-        starIcon.snp.remakeConstraints { make in
-            make.top.equalTo(infoName.snp.bottom).offset(5)
-            make.leading.equalTo(infoView).offset(25)
-            make.height.width.equalTo(15)
-            
-        }
-        
-        infoScore.snp.remakeConstraints { make in
-            make.centerY.equalTo(starIcon.snp.centerY)
-            make.height.equalTo(25)
-            make.width.equalTo(40)
-            make.leading.equalTo(starIcon.snp.trailing).offset(5)
-        }
-        
-        gasKindsLabel.snp.remakeConstraints { make in
-            make.trailing.equalTo(infoView.snp.trailing).offset(-15)
-            make.top.equalTo(infoView.snp.top).offset(15)
-            make.width.equalTo(100)
-            make.height.equalTo(30)
-        }
-        
-        gasPriceLabel.snp.remakeConstraints { make in
-            make.top.equalTo(gasKindsLabel.snp.bottom)
-            make.centerX.equalTo(gasKindsLabel)
-            make.width.equalTo(100)
-            make.height.equalTo(40)
-        }
+//        infoView.snp.remakeConstraints { make in
+//            make.bottom.equalTo(self)
+//            make.height.equalTo(130)
+//            make.width.equalTo(self)
+//        }
+//
+//        infoView.addSubViews(infoIcon, infoName, starIcon, infoScore, gasKindsLabel, gasPriceLabel)
+//        infoIcon.snp.remakeConstraints { make in
+//            make.top.equalTo(infoView.snp.top).offset(20)
+//            make.leading.equalTo(infoView).offset(25)
+//            make.width.height.equalTo(25)
+//        }
+//
+//        infoName.snp.remakeConstraints { make in
+//            make.leading.equalTo(infoIcon.snp.trailing).offset(15)
+//            make.width.equalTo(240)
+//            make.height.equalTo(50)
+//            make.centerY.equalTo(infoIcon)
+//        }
+//
+//        starIcon.snp.remakeConstraints { make in
+//            make.top.equalTo(infoName.snp.bottom).offset(5)
+//            make.leading.equalTo(infoView).offset(25)
+//            make.height.width.equalTo(15)
+//
+//        }
+//
+//        infoScore.snp.remakeConstraints { make in
+//            make.centerY.equalTo(starIcon.snp.centerY)
+//            make.height.equalTo(25)
+//            make.width.equalTo(40)
+//            make.leading.equalTo(starIcon.snp.trailing).offset(5)
+//        }
+//
+//        gasKindsLabel.snp.remakeConstraints { make in
+//            make.trailing.equalTo(infoView.snp.trailing).offset(-15)
+//            make.top.equalTo(infoView.snp.top).offset(15)
+//            make.width.equalTo(100)
+//            make.height.equalTo(30)
+//        }
+//
+//        gasPriceLabel.snp.remakeConstraints { make in
+//            make.top.equalTo(gasKindsLabel.snp.bottom)
+//            make.centerX.equalTo(gasKindsLabel)
+//            make.width.equalTo(100)
+//            make.height.equalTo(40)
+//        }
         
         userLocationView.snp.remakeConstraints { make in
-            make.bottom.equalTo(infoView.snp.top).offset(10)
+            make.bottom.equalTo(infoCV.snp.top).offset(10)
             make.trailing.equalTo(self)
             make.width.height.equalTo(80)
         }
@@ -132,14 +144,14 @@ class OilMapView: BaseView{
 
     func gasInfoViewMode(){
         
-        infoView.snp.remakeConstraints { make in
+        infoCV.snp.remakeConstraints { make in
             make.bottom.equalTo(self)
-            make.height.equalTo(130)
+            make.height.equalTo(140)
             make.width.equalTo(self)
         }
         
         userLocationView.snp.remakeConstraints { make in
-            make.bottom.equalTo(infoView.snp.top).offset(10)
+            make.bottom.equalTo(infoCV.snp.top).offset(10)
             make.trailing.equalTo(self)
             make.width.height.equalTo(80)
         }
@@ -149,7 +161,7 @@ class OilMapView: BaseView{
     
     func mapViewMode(){
         
-        infoView.snp.remakeConstraints { make in
+        infoCV.snp.remakeConstraints { make in
             make.top.equalTo(self.snp.bottom)
             make.height.equalTo(130)
             make.width.equalToSuperview()

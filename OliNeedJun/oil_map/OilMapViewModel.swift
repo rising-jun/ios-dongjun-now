@@ -26,6 +26,7 @@ final class OilMapViewModel: ViewModelType{
         let touchedGasStation: Observable<Int>?
         let mapTouched: Observable<Void>?
         let clusterMode: Observable<ClusterLevel>?
+        let infoPageInput: Observable<Int>?
     }
     
     struct Output{
@@ -127,6 +128,14 @@ final class OilMapViewModel: ViewModelType{
             }.bind(to: self.state)
             .disposed(by: disposeBag)
         
+        input.infoPageInput?
+            .withLatestFrom(state){ page, state -> OilMapState in
+                var newState = state
+                newState.pageInfo = page
+                return newState
+            }.bind(to: self.state)
+            .disposed(by: disposeBag)
+        
         output = Output(state: state.asDriver())
         return output!
     }
@@ -147,6 +156,7 @@ struct OilMapState{
     var gsList: [GasStationInfo] = []
     var mapViewMode: MapViewMode? = .viewGasStation
     var clusterMode: ClusterLevel? = .DetailGasStation
+    var pageInfo: Int = -1
 }
 
 enum PossibleCheck{
