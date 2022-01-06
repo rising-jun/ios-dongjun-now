@@ -62,11 +62,7 @@ class OilMapViewController: BaseViewController{
     
     override func bindViewModel() {
         super.bindViewModel()
-        
-        v.userLocationView.rx.tap.bind { _ in
-            print("hi")
-        }.disposed(by: disposeBag)
-        
+
         output.state?.map{$0.viewLogic}
         .filter{$0 == .setUpView}
         .distinctUntilChanged()
@@ -130,9 +126,11 @@ class OilMapViewController: BaseViewController{
         
         output.state?.map{$0.gsTouchedIndex ?? -1}
         .filter{$0 > -1}
+        .distinctUntilChanged()
         .drive(onNext: { [weak self] index in
-            //print("index \(index)")
-            //터치이벤트!
+            guard let self = self else { return }
+            self.infoPage.onNext(index)
+            self.v.infoCV.scrollToItem(at: IndexPath(row: index, section: 0), at: .left, animated: false)
         }).disposed(by: disposeBag)
         
         output.state?.map{$0.mapViewMode}
@@ -175,6 +173,7 @@ class OilMapViewController: BaseViewController{
         })
         
         output.state?.map{$0.pageInfo}.filter{$0 > -1}
+        .distinctUntilChanged()
         .drive(onNext: { [weak self] page in
             guard let self = self else { return }
             self.setGasStationCamera(index: page)
@@ -219,12 +218,12 @@ extension OilMapViewController{
             markImage.setDatas(image: info.gasIcon, text: info.price.withComma)
             marker.iconImage = NMFOverlayImage(image: markImage.makeMarker())
             marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-                self?.setGasStationInfo(i: info)
                 self?.markerTouched.onNext(i)
                 return true
             };
             detailMarkerArr.append(marker)
         }
+        
         var markIcon = GasStationMarker()
         for i in 0 ..< gasStationList.count{
             let info = gasStationList[i]
@@ -235,7 +234,6 @@ extension OilMapViewController{
             markIcon.setDatas(image: info.gasIcon, text: info.price.withComma)
             marker.iconImage = NMFOverlayImage(image: markIcon.makeMarker())
             marker.touchHandler = { [weak self] (overlay: NMFOverlay) -> Bool in
-                self?.setGasStationInfo(i: info)
                 self?.markerTouched.onNext(i)
                 return true
             };
@@ -243,19 +241,15 @@ extension OilMapViewController{
         }
         
         if gasStationList.count > 0{
-            setGasStationInfo(i: gasStationList.first!)
+            print("checking")
+            setGasStationCamera(index: 0)
         }
         
     }
     
-    func setGasStationInfo(i: GasStationInfo){
-        v.infoIcon.image = i.gasIcon
-        v.infoName.text = i.name
-        v.infoScore.text = "\(i.score)"
-        v.gasPriceLabel.text = i.price.withComma
-    }
     
     func setGasStationCamera(index: Int){
+        print("index selected \(index)")
         let info: GasStationInfo = gasStationList[index]
         let cameraUpdate = NMFCameraUpdate(scrollTo: NMGLatLng(lat: info.lat ?? 0, lng: info.long ?? 0))
         cameraUpdate.animation = .easeIn
