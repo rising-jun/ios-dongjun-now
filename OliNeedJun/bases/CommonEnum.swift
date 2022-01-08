@@ -10,6 +10,8 @@ import Foundation
 enum PresentVC{
     case splash
     case oilMap
+    case login
+    case main
 }
 
 enum ViewState{

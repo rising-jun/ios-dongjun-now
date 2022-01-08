@@ -12,7 +12,7 @@ import RxViewController
 class SplashViewController: BaseViewController {
     
     lazy var v = SplashView(frame: view.frame)
-    let oilMapViewController = OilMapViewController()
+    let loginViewController = LoginViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -56,11 +56,16 @@ extension SplashViewController{
     }
     
     func presentVC(vcName: PresentVC){
-        if vcName == .oilMap{
-            
-            oilMapViewController.modalPresentationStyle = .fullScreen
-            self.present(oilMapViewController, animated: true, completion: nil)
+//        if vcName == .oilMap{
+//
+//            oilMapViewController.modalPresentationStyle = .fullScreen
+//            self.present(oilMapViewController, animated: true, completion: nil)
+//        }
+        if vcName == .login{
+            loginViewController.modalPresentationStyle = .fullScreen
+            self.present(loginViewController, animated: true, completion: nil)
         }
+        
     }
     
 }

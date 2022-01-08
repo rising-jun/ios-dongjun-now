@@ -273,3 +273,9 @@ extension UIView {
         }
     }
 }
+
+final class CustomColor{
+    static func oilBlue() -> UIColor{
+        return UIColor(red: 75/255, green: 118/255, blue: 186/255, alpha: 1)
+    }
+}

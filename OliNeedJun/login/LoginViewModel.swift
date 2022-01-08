@@ -1,47 +1,51 @@
 //
-//  SplashViewModel.swift
+//  LoginViewModel.swift
 //  OliNeedJun
 //
-//  Created by 김동준 on 2021/12/26.
+//  Created by 김동준 on 2022/01/08.
 //
 
 import Foundation
 import RxSwift
 import RxCocoa
 
-final class SplashViewModel: ViewModelType{
+final class LoginViewModel: ViewModelType{
     var input: Input?
     var output: Output?
     
-    private let state = BehaviorRelay<SplashState>(value: SplashState())
+    private let state = BehaviorRelay<LoginState>(value: LoginState())
     
     struct Input{
-        let timeOver: Observable<Bool>?
+        
         let viewState: Observable<ViewState>?
+        let priceValChanged: Observable<Int>?
+        
+        
     }
     
     struct Output{
-        var state: Driver<SplashState>?
+        var state: Driver<LoginState>?
     }
     
     private let disposeBag = DisposeBag()
     
     func bind(input: Input) -> Output{
         self.input = input
-
-        input.timeOver?
-            .withLatestFrom(state){ done, state -> SplashState in
-                var newState = state
-                newState.presentVC = .login
-                return newState
-            }.bind(to: self.state)
-            .disposed(by: disposeBag)
             
         input.viewState?
             .filter{$0 == .viewDidLoad}
-            .withLatestFrom(state){ viewState, state -> SplashState in
+            .withLatestFrom(state){ viewState, state -> LoginState in
                 var newState = state
                 newState.viewLogic = .setUpView
+                return newState
+            }.bind(to: self.state)
+            .disposed(by: disposeBag)
+        
+        input.priceValChanged?
+            .distinctUntilChanged()
+            .withLatestFrom(state){ price, state -> LoginState in
+                var newState = state
+                newState.price = price
                 return newState
             }.bind(to: self.state)
             .disposed(by: disposeBag)
@@ -50,18 +54,17 @@ final class SplashViewModel: ViewModelType{
         return output!
     }
     
+        
+    
     
 }
 
 
 
-struct SplashState{
+struct LoginState{
     var presentVC: PresentVC?
     var timeOver: Bool?
     var viewLogic: ViewLogic?
+    var price: Int?
     
-}
-
-enum ViewLogic{
-    case setUpView
 }
