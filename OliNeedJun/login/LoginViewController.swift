@@ -21,41 +21,26 @@ class LoginViewController: BaseViewController{
     
     private let disposeBag: DisposeBag = DisposeBag()
     private let viewModel = LoginViewModel()
-    private lazy var input = LoginViewModel.Input(viewState: self.rx.viewDidLoad.map{ViewState.viewDidLoad}.asObservable(),
+    private lazy var input = LoginViewModel.Input(viewState: Observable.merge(self.rx.viewDidLoad.map{ViewState.viewDidLoad}.asObservable(),
+                                                                              self.rx.viewDidAppear.map{_ in ViewState.viewDidAppear}.asObservable()),
                                                   priceValChanged: v.oilPriceSlider.rx.value.map{(Int($0) / 5) * 5}.distinctUntilChanged().asObservable())
     private lazy var output = viewModel.bind(input: input)
     
     private let spaceThumb = PublishSubject<Float>()
-    
+    let arr: [Int] = []
     
     override func bindViewModel() {
         super.bindViewModel()
-        
+    
         output.state?.map{$0.viewLogic}
-        .filter{$0 == .setUpView}
         .distinctUntilChanged()
         .drive(onNext: { [weak self] logic in
-            self?.setUpView()
-            
-            
-            DispatchQueue.main.async {
-                UIView.animate(withDuration: 1) {
-                    self?.v.oilPriceSlider.setValue(8, animated: true)
-                } completion: { done in
-                    if done{
-                        UIView.animate(withDuration: 1) {
-                            self?.v.oilPriceSlider.setValue(0, animated: true)
-                        }
-                    }
-                }
-
-                
+            guard let self = self else { return }
+            if logic == .setUpView{
+                self.setUpView()
+            }else if logic == .setAnimate{
+                self.setUpAnimation()
             }
-            
-
-            self?.v.layoutIfNeeded()
-
-           
         }).disposed(by: disposeBag)
         
         output.state?.map{$0.price ?? 5}
@@ -71,7 +56,31 @@ class LoginViewController: BaseViewController{
 extension LoginViewController{
     func setUpView(){
         view = v
-        v.oilPriceSlider.spaceThumbAnimation = spaceThumb
-        v.oilPriceSlider.subscribeSpaceValue()
+        print("setview")
     }
+    
+    func setUpAnimation(){
+        print("setAnimation function")
+        
+        PublishSubject<Int>
+            .timer(.milliseconds(0), period: .milliseconds(300), scheduler: MainScheduler.instance)
+            .take(5)
+            .bind { sec in
+            self.animateExcute(reapeat: sec)
+            }.disposed(by: disposeBag)
+        
+    }
+    
+    func animateExcute(reapeat: Int){
+        let value = [15, 5, 0, 5, 0]
+        UIView.animate(withDuration: 0.6, delay: 0.00, options: .allowUserInteraction) {
+            self.v.oilPriceSlider.setValue(Float(value[reapeat]), animated: true)
+        } completion: { done in
+            if done{
+                print("done")
+                return
+            }
+        }
+    }
+    
 }

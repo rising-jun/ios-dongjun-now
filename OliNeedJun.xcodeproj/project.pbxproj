@@ -21,7 +21,6 @@
 		726BF7DB27895EE90015983F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726BF7DA27895EE90015983F /* LoginView.swift */; };
 		726BF7DD278963330015983F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726BF7DC278963330015983F /* LoginViewController.swift */; };
 		726BF7DF278965130015983F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726BF7DE278965130015983F /* LoginViewModel.swift */; };
-		726BF7E227899AAA0015983F /* OilSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726BF7E127899AAA0015983F /* OilSliderView.swift */; };
 		728C6348277998E6003DDC4C /*  GasStationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728C6347277998E6003DDC4C /*  GasStationInfo.swift */; };
 		728C634B27799F0D003DDC4C /* ReadGasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728C634A27799F0D003DDC4C /* ReadGasStation.swift */; };
 		72A74E9B2784808300E388BD /* InfoCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A74E9A2784808300E388BD /* InfoCollectionDelegate.swift */; };
@@ -50,7 +49,6 @@
 		726BF7DA27895EE90015983F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		726BF7DC278963330015983F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		726BF7DE278965130015983F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		726BF7E127899AAA0015983F /* OilSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OilSliderView.swift; sourceTree = "<group>"; };
 		728C6347277998E6003DDC4C /*  GasStationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " GasStationInfo.swift"; sourceTree = "<group>"; };
 		728C634A27799F0D003DDC4C /* ReadGasStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadGasStation.swift; sourceTree = "<group>"; };
 		72A74E9A2784808300E388BD /* InfoCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionDelegate.swift; sourceTree = "<group>"; };
@@ -117,20 +115,11 @@
 		726BF7D927895ECD0015983F /* login */ = {
 			isa = PBXGroup;
 			children = (
-				726BF7E027899A9B0015983F /* custom_view */,
 				726BF7DA27895EE90015983F /* LoginView.swift */,
 				726BF7DC278963330015983F /* LoginViewController.swift */,
 				726BF7DE278965130015983F /* LoginViewModel.swift */,
 			);
 			path = login;
-			sourceTree = "<group>";
-		};
-		726BF7E027899A9B0015983F /* custom_view */ = {
-			isa = PBXGroup;
-			children = (
-				726BF7E127899AAA0015983F /* OilSliderView.swift */,
-			);
-			path = custom_view;
 			sourceTree = "<group>";
 		};
 		728C6346277998C2003DDC4C /* entity */ = {
@@ -361,7 +350,6 @@
 				72AB0AC927784A36004F1EB1 /* SplashViewController.swift in Sources */,
 				726BF7DD278963330015983F /* LoginViewController.swift in Sources */,
 				72361B392778977F002A0D5E /* CustomOverlayDataSource.swift in Sources */,
-				726BF7E227899AAA0015983F /* OilSliderView.swift in Sources */,
 				7239E0552778785700D463C1 /* PermisisionCheck.swift in Sources */,
 				728C634B27799F0D003DDC4C /* ReadGasStation.swift in Sources */,
 				72006425277859A900F27698 /* ViewModelProtocol.swift in Sources */,

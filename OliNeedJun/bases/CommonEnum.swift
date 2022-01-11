@@ -16,7 +16,7 @@ enum PresentVC{
 
 enum ViewState{
     case viewDidLoad
-    case viewWillAppear
+    case viewDidAppear
 }
 
 enum ClusterLevel{

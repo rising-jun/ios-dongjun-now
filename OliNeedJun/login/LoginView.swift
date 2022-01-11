@@ -29,20 +29,32 @@ class LoginView: BaseView{
         $0.sizeToFit()
     }
     
-    let oilPriceSlider = OilSliderView().then{
+    let oilPriceSlider = UISlider().then{
         $0.backgroundColor = .white
-        $0.maximumValue = 50
-        $0.minimumValue = 5
+        $0.maximumValue = 100
+        $0.minimumValue = 0
         $0.thumbTintColor = CustomColor.oilBlue()
         $0.tintColor = CustomColor.oilBlue()
         
+    }
+    
+    let blueView = UIView().then{
+        $0.backgroundColor = CustomColor.oilBlue()
+        $0.layer.cornerRadius = 25
+    }
+
+    let loginBtn = UIButton().then{
+        $0.backgroundColor = .systemYellow
+        $0.layer.cornerRadius = 15
+        $0.setTitle("카카오로 로그인", for: .normal)
+        $0.setTitleColor(.white, for: .normal)
     }
     
     
     override func setup() {
         super.setup()
         backgroundColor = .white
-        addSubViews(introLabel, priceLabel, oilPriceSlider)
+        addSubViews(introLabel, priceLabel, oilPriceSlider, blueView)
         
         introLabel.backgroundColor = .white
         introLabel.snp.makeConstraints { make in
@@ -52,7 +64,6 @@ class LoginView: BaseView{
             make.height.equalTo(100)
         }
         
-        priceLabel.backgroundColor = .yellow
         priceLabel.snp.makeConstraints { make in
             make.top.equalTo(introLabel.snp.bottom).offset(20)
             make.centerX.equalTo(self.snp.centerX)
@@ -67,6 +78,20 @@ class LoginView: BaseView{
             make.height.equalTo(50)
         }
     
+        blueView.snp.makeConstraints { make in
+            make.top.equalTo(oilPriceSlider.snp.bottom).offset(20)
+            make.bottom.equalTo(self.snp.bottom)
+            make.width.equalTo(self)
+        }
+        
+        blueView.addSubview(loginBtn)
+        loginBtn.snp.makeConstraints { make in
+            make.top.equalTo(blueView.snp.top).offset(40)
+            make.leading.equalTo(self.snp.leading).offset(30)
+            make.trailing.equalTo(self.snp.trailing).offset(-30)
+            make.height.equalTo(50)
+        }
+        
         
     }
     

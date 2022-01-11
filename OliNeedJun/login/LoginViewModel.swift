@@ -33,10 +33,10 @@ final class LoginViewModel: ViewModelType{
         self.input = input
             
         input.viewState?
-            .filter{$0 == .viewDidLoad}
             .withLatestFrom(state){ viewState, state -> LoginState in
                 var newState = state
-                newState.viewLogic = .setUpView
+                viewState == .viewDidLoad ? (newState.viewLogic = .setUpView) : (newState.viewLogic = .setAnimate)
+
                 return newState
             }.bind(to: self.state)
             .disposed(by: disposeBag)

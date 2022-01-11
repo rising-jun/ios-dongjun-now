@@ -64,4 +64,5 @@ struct SplashState{
 
 enum ViewLogic{
     case setUpView
+    case setAnimate
 }
