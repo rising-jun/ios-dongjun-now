@@ -36,6 +36,18 @@ class LoginView: BaseView{
         $0.thumbTintColor = CustomColor.oilBlue()
         $0.tintColor = CustomColor.oilBlue()
         
+        
+    }
+    
+    let makePriceLabel = UILabel().then{
+        $0.textAlignment = .center
+        $0.textColor = CustomColor.oilBlue()
+        $0.font = UIFont.boldSystemFont(ofSize: 42)
+        $0.sizeToFit()
+        $0.isHidden = true
+        $0.alpha = 0.0
+        
+        $0.text = "10만원"
     }
     
     let blueView = UIView().then{
@@ -54,7 +66,7 @@ class LoginView: BaseView{
     override func setup() {
         super.setup()
         backgroundColor = .white
-        addSubViews(introLabel, priceLabel, oilPriceSlider, blueView)
+        addSubViews(introLabel, priceLabel, oilPriceSlider, makePriceLabel, blueView)
         
         introLabel.backgroundColor = .white
         introLabel.snp.makeConstraints { make in
@@ -75,7 +87,14 @@ class LoginView: BaseView{
             make.top.equalTo(priceLabel.snp.bottom).offset(20)
             make.trailing.equalTo(self).offset(-50)
             make.left.equalTo(self).offset(50)
-            make.height.equalTo(50)
+            make.height.equalTo(40)
+        }
+        
+        makePriceLabel.snp.makeConstraints { make in
+            make.top.equalTo(priceLabel.snp.bottom)
+            make.centerX.equalTo(self)
+            make.width.equalTo(300)
+            make.height.equalTo(70)
         }
     
         blueView.snp.makeConstraints { make in
@@ -93,6 +112,17 @@ class LoginView: BaseView{
         }
         
         
+    }
+    
+}
+
+extension LoginView{
+    func showMakePrice(){
+        oilPriceSlider.isHidden = true
+        priceLabel.textColor = .systemGray
+        makePriceLabel.isHidden = false
+        makePriceLabel.alpha = 1.0
+        introLabel.text = "이만큼까지 줄여드릴게요!"
     }
     
 }

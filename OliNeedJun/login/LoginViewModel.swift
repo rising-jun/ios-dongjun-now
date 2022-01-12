@@ -19,7 +19,8 @@ final class LoginViewModel: ViewModelType{
         
         let viewState: Observable<ViewState>?
         let priceValChanged: Observable<Int>?
-        
+        let userSliding: Observable<Void>?
+        let userSlideEnd: Observable<Void>?
         
     }
     
@@ -28,6 +29,7 @@ final class LoginViewModel: ViewModelType{
     }
     
     private let disposeBag = DisposeBag()
+    private var changePrice: Int = 0
     
     func bind(input: Input) -> Output{
         self.input = input
@@ -43,9 +45,27 @@ final class LoginViewModel: ViewModelType{
         
         input.priceValChanged?
             .distinctUntilChanged()
-            .withLatestFrom(state){ price, state -> LoginState in
+            .withLatestFrom(state){ [weak self] price, state -> LoginState in
                 var newState = state
                 newState.price = price
+                self?.calcChangePrice(price: price)
+                return newState
+            }.bind(to: self.state)
+            .disposed(by: disposeBag)
+        
+        input.userSliding?
+            .withLatestFrom(state){ price, state -> LoginState in
+                var newState = state
+                newState.animateStop = true
+                return newState
+            }.bind(to: self.state)
+            .disposed(by: disposeBag)
+        
+        input.userSlideEnd?
+            .withLatestFrom(state){ [weak self] price, state -> LoginState in
+                var newState = state
+                newState.sliderTouchable = false
+                newState.changePrice = self!.changePrice
                 return newState
             }.bind(to: self.state)
             .disposed(by: disposeBag)
@@ -59,12 +79,19 @@ final class LoginViewModel: ViewModelType{
     
 }
 
-
+extension LoginViewModel{
+    func calcChangePrice(price: Int){
+        self.changePrice = Int(Double(price) * 0.9)
+    }
+    
+}
 
 struct LoginState{
     var presentVC: PresentVC?
     var timeOver: Bool?
     var viewLogic: ViewLogic?
     var price: Int?
-    
+    var sliderTouchable: Bool? = true
+    var animateStop: Bool? = false
+    var changePrice: Int = 0
 }
