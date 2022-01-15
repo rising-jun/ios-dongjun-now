@@ -121,7 +121,7 @@ extension LoginView{
         oilPriceSlider.isHidden = true
         priceLabel.textColor = .systemGray
         makePriceLabel.isHidden = false
-        makePriceLabel.alpha = 1.0
+        introLabel.alpha = 1.0
         introLabel.text = "이만큼까지 줄여드릴게요!"
     }
     

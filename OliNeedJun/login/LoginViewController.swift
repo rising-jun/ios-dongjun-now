@@ -59,8 +59,14 @@ class LoginViewController: BaseViewController{
         .drive(onNext: { [weak self]  _ in
             guard let self = self else { return }
             self.v.oilPriceSlider.isUserInteractionEnabled = false
-            UIView.animate(withDuration: 1.5) {
+            UIView.animate(withDuration: 0.7) {
+                self.v.introLabel.alpha = 0.0
                 self.v.showMakePrice()
+            }completion: { done in
+                print("done")
+                UIView.animate(withDuration: 0.7) {
+                self.v.makePriceLabel.alpha = 1.0
+                }
             }
         }).disposed(by: disposeBag)
     
@@ -96,8 +102,6 @@ extension LoginViewController{
             } onDisposed: {
                 print("disposed timer")
             }
-        
-    
     }
     
     func animateExcute(reapeat: Int){
