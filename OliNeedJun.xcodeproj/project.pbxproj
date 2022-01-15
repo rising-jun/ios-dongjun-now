@@ -23,6 +23,12 @@
 		726BF7DF278965130015983F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726BF7DE278965130015983F /* LoginViewModel.swift */; };
 		728C6348277998E6003DDC4C /*  GasStationInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728C6347277998E6003DDC4C /*  GasStationInfo.swift */; };
 		728C634B27799F0D003DDC4C /* ReadGasStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 728C634A27799F0D003DDC4C /* ReadGasStation.swift */; };
+		729C8AE62792B37C003A60AF /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C8AE52792B37C003A60AF /* HomeView.swift */; };
+		729C8AE82792B389003A60AF /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C8AE72792B389003A60AF /* HomeViewController.swift */; };
+		729C8AEA2792B393003A60AF /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C8AE92792B393003A60AF /* HomeViewModel.swift */; };
+		729C8AED2792BEDD003A60AF /* SettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C8AEC2792BEDD003A60AF /* SettingViewController.swift */; };
+		729C8AF02792C982003A60AF /* MenuCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C8AEF2792C982003A60AF /* MenuCollectionDelegate.swift */; };
+		729C8AF22792CA6B003A60AF /* MenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 729C8AF12792CA6B003A60AF /* MenuViewCell.swift */; };
 		72A74E9B2784808300E388BD /* InfoCollectionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A74E9A2784808300E388BD /* InfoCollectionDelegate.swift */; };
 		72A74E9D2784814800E388BD /* InfoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72A74E9C2784814800E388BD /* InfoViewCell.swift */; };
 		72AB0AC527784A36004F1EB1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72AB0AC427784A36004F1EB1 /* AppDelegate.swift */; };
@@ -51,6 +57,12 @@
 		726BF7DE278965130015983F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		728C6347277998E6003DDC4C /*  GasStationInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " GasStationInfo.swift"; sourceTree = "<group>"; };
 		728C634A27799F0D003DDC4C /* ReadGasStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadGasStation.swift; sourceTree = "<group>"; };
+		729C8AE52792B37C003A60AF /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		729C8AE72792B389003A60AF /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		729C8AE92792B393003A60AF /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		729C8AEC2792BEDD003A60AF /* SettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingViewController.swift; sourceTree = "<group>"; };
+		729C8AEF2792C982003A60AF /* MenuCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCollectionDelegate.swift; sourceTree = "<group>"; };
+		729C8AF12792CA6B003A60AF /* MenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewCell.swift; sourceTree = "<group>"; };
 		72A74E9A2784808300E388BD /* InfoCollectionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCollectionDelegate.swift; sourceTree = "<group>"; };
 		72A74E9C2784814800E388BD /* InfoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewCell.swift; sourceTree = "<group>"; };
 		72AB0AC127784A36004F1EB1 /* OliNeedJun.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OliNeedJun.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -138,6 +150,34 @@
 			path = data;
 			sourceTree = "<group>";
 		};
+		729C8AE42792B2BF003A60AF /* home */ = {
+			isa = PBXGroup;
+			children = (
+				729C8AEE2792C8E2003A60AF /* menucollection_delegate */,
+				729C8AE52792B37C003A60AF /* HomeView.swift */,
+				729C8AE72792B389003A60AF /* HomeViewController.swift */,
+				729C8AE92792B393003A60AF /* HomeViewModel.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		729C8AEB2792BED0003A60AF /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				729C8AEC2792BEDD003A60AF /* SettingViewController.swift */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
+		729C8AEE2792C8E2003A60AF /* menucollection_delegate */ = {
+			isa = PBXGroup;
+			children = (
+				729C8AEF2792C982003A60AF /* MenuCollectionDelegate.swift */,
+				729C8AF12792CA6B003A60AF /* MenuViewCell.swift */,
+			);
+			path = menucollection_delegate;
+			sourceTree = "<group>";
+		};
 		72A74E992784806800E388BD /* infocollection_delegate */ = {
 			isa = PBXGroup;
 			children = (
@@ -169,6 +209,8 @@
 		72AB0AC327784A36004F1EB1 /* OliNeedJun */ = {
 			isa = PBXGroup;
 			children = (
+				729C8AEB2792BED0003A60AF /* setting */,
+				729C8AE42792B2BF003A60AF /* home */,
 				726BF7D927895ECD0015983F /* login */,
 				728C634927799E00003DDC4C /* data */,
 				728C6346277998C2003DDC4C /* entity */,
@@ -343,21 +385,27 @@
 				72E6F0EF2780568500C71B41 /* GasStationMarker.swift in Sources */,
 				72A74E9B2784808300E388BD /* InfoCollectionDelegate.swift in Sources */,
 				7200642B27785E2B00F27698 /* OilMapView.swift in Sources */,
+				729C8AE62792B37C003A60AF /* HomeView.swift in Sources */,
 				720064222778593300F27698 /* SplashViewModel.swift in Sources */,
 				7200642D27785E4C00F27698 /* OilMapViewModel.swift in Sources */,
+				729C8AE82792B389003A60AF /* HomeViewController.swift in Sources */,
 				72ED3774277B26650021B68B /* NaverMapDelegate.swift in Sources */,
 				72A74E9D2784814800E388BD /* InfoViewCell.swift in Sources */,
 				72AB0AC927784A36004F1EB1 /* SplashViewController.swift in Sources */,
+				729C8AED2792BEDD003A60AF /* SettingViewController.swift in Sources */,
 				726BF7DD278963330015983F /* LoginViewController.swift in Sources */,
 				72361B392778977F002A0D5E /* CustomOverlayDataSource.swift in Sources */,
 				7239E0552778785700D463C1 /* PermisisionCheck.swift in Sources */,
 				728C634B27799F0D003DDC4C /* ReadGasStation.swift in Sources */,
 				72006425277859A900F27698 /* ViewModelProtocol.swift in Sources */,
+				729C8AF02792C982003A60AF /* MenuCollectionDelegate.swift in Sources */,
 				720247E427784F8400AA1B61 /* SplashView.swift in Sources */,
 				72AB0ADC27784DE5004F1EB1 /* BaseClasses.swift in Sources */,
 				72006427277859F000F27698 /* CommonEnum.swift in Sources */,
 				7200642927785A7700F27698 /* OilMapViewController.swift in Sources */,
+				729C8AEA2792B393003A60AF /* HomeViewModel.swift in Sources */,
 				726BF7DB27895EE90015983F /* LoginView.swift in Sources */,
+				729C8AF22792CA6B003A60AF /* MenuViewCell.swift in Sources */,
 				72AB0AC527784A36004F1EB1 /* AppDelegate.swift in Sources */,
 				728C6348277998E6003DDC4C /*  GasStationInfo.swift in Sources */,
 				726BF7DF278965130015983F /* LoginViewModel.swift in Sources */,

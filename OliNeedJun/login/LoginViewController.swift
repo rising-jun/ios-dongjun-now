@@ -25,8 +25,12 @@ class LoginViewController: BaseViewController{
                                                                               self.rx.viewDidAppear.map{_ in ViewState.viewDidAppear}.asObservable()),
                                                   priceValChanged: v.oilPriceSlider.rx.value.map{(Int($0) / 10) * 5}.distinctUntilChanged().asObservable(),
                                                   userSliding: v.oilPriceSlider.rx.controlEvent(.touchDown).map{Void()}.asObservable(),
-                                                  userSlideEnd: v.oilPriceSlider.rx.controlEvent(.touchUpInside).map{Void()}.asObservable())
+                                                  userSlideEnd: v.oilPriceSlider.rx.controlEvent(.touchUpInside).map{Void()}.asObservable(),
+                                                  loginAction: v.loginBtn.rx.tap.debounce(.milliseconds(500), scheduler: MainScheduler.instance).asObservable())
     private lazy var output = viewModel.bind(input: input)
+    
+    lazy var vcArr: [BaseViewController] = [HomeViewController(), SettingViewController()]
+    lazy var vcNameArr = ["홈", "내정보"]
     
     private let spaceThumb = PublishSubject<Float>()
     let arr: [Int] = []
@@ -76,13 +80,16 @@ class LoginViewController: BaseViewController{
         .drive(onNext: { [weak self]  _ in
             guard let self = self else { return }
             self.timer.dispose()
-           
         }).disposed(by: disposeBag)
         
-        
-        
+        output.state?.map{$0.presentVC ?? .login}
+        .distinctUntilChanged()
+        .filter{$0 == .home}
+        .drive(onNext: { [weak self] vc in
+            guard let self = self else { return }
+            self.present(self.makingTabVC(), animated: true)
+        }).disposed(by: disposeBag)
     }
-    
 }
 
 extension LoginViewController{
@@ -110,5 +117,17 @@ extension LoginViewController{
             self.v.oilPriceSlider.setValue(Float(value[reapeat]), animated: true)
         }
     }
+    
+    func makingTabVC() -> UITabBarController{
+        let tabBar = UITabBarController()
+        tabBar.modalPresentationStyle = .fullScreen
+        for i in 0 ..< vcArr.count{
+            tabBar.addChild(vcArr[i])
+            vcArr[i].tabBarItem = UITabBarItem(title: vcNameArr[i], image: UIImage(), tag: i)
+        }
+        tabBar.tabBar.backgroundColor = . white
+        return tabBar
+    }
+    
     
 }

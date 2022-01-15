@@ -21,6 +21,7 @@ final class LoginViewModel: ViewModelType{
         let priceValChanged: Observable<Int>?
         let userSliding: Observable<Void>?
         let userSlideEnd: Observable<Void>?
+        let loginAction: Observable<Void>?
         
     }
     
@@ -69,6 +70,15 @@ final class LoginViewModel: ViewModelType{
                 return newState
             }.bind(to: self.state)
             .disposed(by: disposeBag)
+        
+        input.loginAction?
+            .withLatestFrom(state)
+            .map{ state -> LoginState in
+            var newState = state
+            newState.presentVC = .home
+            return newState
+        }.bind(to: self.state)
+        .disposed(by: disposeBag)
         
         output = Output(state: state.asDriver())
         return output!

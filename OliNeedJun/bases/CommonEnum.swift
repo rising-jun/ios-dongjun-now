@@ -11,7 +11,7 @@ enum PresentVC{
     case splash
     case oilMap
     case login
-    case main
+    case home
 }
 
 enum ViewState{
