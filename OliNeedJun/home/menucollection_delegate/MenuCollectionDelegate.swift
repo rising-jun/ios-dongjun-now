@@ -7,16 +7,22 @@
 
 import Foundation
 import UIKit
+import RxSwift
 
 
 class MenuCollectionDelegate: NSObject{
-    var menuTitleArr: [String] = ["맵", "유가동향", "기름가계부"]
-    var menuSubTitleArr: [String] = ["주변주유소를 찾고\n가격을 비교해보세요!", "유가동향을 한눈에 보여드릴게요!", "기름값을 더 아껴보아요!"]
+    private var menuTitleArr: [String] = ["맵", "유가동향", "기름가계부"]
+    private var menuSubTitleArr: [String] = ["주변주유소를 찾고\n가격을 비교해보세요!", "유가동향을 한눈에 보여드릴게요!", "기름값을 더 아껴보아요!"]
+    private let disposeBag: DisposeBag = DisposeBag()
+    private var touchPublish: PublishSubject<PresentVC>!
+    
+    func setTouchPublish(touchPublish: PublishSubject<PresentVC>){
+        self.touchPublish = touchPublish
+    }
 }
 
 extension MenuCollectionDelegate: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print("hi  \(menuTitleArr.count) ^^")
         return menuTitleArr.count
     }
     
@@ -45,6 +51,17 @@ extension MenuCollectionDelegate: UICollectionViewDelegate, UICollectionViewData
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
         return 0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("selected \(indexPath.row)")
+        switch indexPath.row{
+        case 0: touchPublish.onNext(.oilMap)
+        case 1: touchPublish.onNext(.oilChart)
+        case 2: touchPublish.onNext(.oilAccount)
+        default: break
+    
+        }
     }
     
 }

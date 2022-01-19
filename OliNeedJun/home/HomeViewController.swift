@@ -14,6 +14,7 @@ import RxCocoa
 class HomeViewController: BaseViewController{
     
     lazy var v = HomeView(frame: view.frame)
+    lazy var vcArray: [PresentVC: BaseViewController] = [.oilMap: OilMapViewController()]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +22,11 @@ class HomeViewController: BaseViewController{
     
     private let disposeBag = DisposeBag()
     private let viewModel = HomeViewModel()
-    private lazy var input = HomeViewModel.Input(viewState: self.rx.viewDidLoad.map{ViewState.viewDidLoad}.asObservable())
+    private lazy var input = HomeViewModel.Input(viewState: self.rx.viewDidLoad.map{ViewState.viewDidLoad}.asObservable(),
+                                                 touchedPushScreen: touchPublish.distinctUntilChanged().asObservable())
     private lazy var output = viewModel.bind(input: input)
-    
+    private let touchPublish = PublishSubject<PresentVC>()
     private let menuDelegate = MenuCollectionDelegate()
-    
     
     override func bindViewModel() {
         super.bindViewModel()
@@ -37,7 +38,13 @@ class HomeViewController: BaseViewController{
             guard let self = self else { return }
             self.setUpView()
         }).disposed(by: disposeBag)
-        
+
+        output.state?.map{$0.presentVC ?? .home}
+        .distinctUntilChanged()
+        .drive(onNext: { [weak self] presentVC in
+            guard let self = self else { return }
+            self.presentViewController(presentVC: presentVC)
+        }).disposed(by: disposeBag)
         
         
     }
@@ -46,13 +53,21 @@ class HomeViewController: BaseViewController{
 }
 
 extension HomeViewController{
+    
     func setUpView(){
         view = v
+        menuDelegate.setTouchPublish(touchPublish: self.touchPublish)
         v.menuCV.delegate = menuDelegate
         v.menuCV.dataSource = menuDelegate
         v.menuCV.register(MenuViewCell.self, forCellWithReuseIdentifier: "MenuViewCell")
     }
     
-    
+    func presentViewController(presentVC: PresentVC){
+        guard let vc = vcArray[presentVC] else {
+            return
+        }
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
     
 }

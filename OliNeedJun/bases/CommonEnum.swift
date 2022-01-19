@@ -12,6 +12,8 @@ enum PresentVC{
     case oilMap
     case login
     case home
+    case oilChart
+    case oilAccount
 }
 
 enum ViewState{
@@ -23,3 +25,6 @@ enum ClusterLevel{
     case DetailGasStation
     case onlyIcon
 }
+
+
+

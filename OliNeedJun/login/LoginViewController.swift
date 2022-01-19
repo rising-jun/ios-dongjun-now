@@ -89,6 +89,13 @@ class LoginViewController: BaseViewController{
             guard let self = self else { return }
             self.present(self.makingTabVC(), animated: true)
         }).disposed(by: disposeBag)
+        
+        output.state?.map{$0.changePrice ?? 0}
+        .distinctUntilChanged()
+        .map{"\(String($0))만원"}
+        .drive(v.makePriceLabel.rx.text)
+        .disposed(by: disposeBag)
+        
     }
 }
 

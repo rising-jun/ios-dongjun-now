@@ -18,6 +18,7 @@ class HomeViewModel: ViewModelType{
     
     struct Input{
         let viewState: Observable<ViewState>?
+        let touchedPushScreen: Observable<PresentVC>?
     }
     
     struct Output{
@@ -35,6 +36,14 @@ class HomeViewModel: ViewModelType{
             }.bind(to: self.state)
             .disposed(by: disposeBag)
         
+        input.touchedPushScreen?
+            .distinctUntilChanged()
+            .withLatestFrom(state){ presentVC, state -> HomeState in
+                var newState = state
+                newState.presentVC = presentVC
+                return newState
+            }.bind(to: self.state)
+            .disposed(by: disposeBag)
         
         
         output = Output(state: state.asDriver())
