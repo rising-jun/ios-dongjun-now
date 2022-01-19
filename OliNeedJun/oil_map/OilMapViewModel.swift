@@ -108,6 +108,7 @@ final class OilMapViewModel: ViewModelType{
             .withLatestFrom(state){ index, state -> OilMapState in
             var newState = state
             newState.mapViewMode = .viewMap
+                newState.pageInfo = -1
             return newState
         }.bind(to: self.state)
         .disposed(by: disposeBag)

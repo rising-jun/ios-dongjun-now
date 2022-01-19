@@ -57,7 +57,7 @@ class OilMapViewController: BaseViewController{
                                            touchedGasStation: markerTouched.asObserver(),
                                            mapTouched: mapTouched.asObservable(),
                                            clusterMode: clusterMode.distinctUntilChanged().asObservable(),
-                                           infoPageInput: infoPage.distinctUntilChanged().asObservable())
+                                           infoPageInput: infoPage.distinctUntilChanged().asObservable().observe(on: MainScheduler.asyncInstance))
     lazy var output = viewModel.bind(input: input)
     
     override func bindViewModel() {
@@ -130,7 +130,8 @@ class OilMapViewController: BaseViewController{
         .drive(onNext: { [weak self] index in
             guard let self = self else { return }
             self.infoPage.onNext(index)
-            self.v.infoCV.scrollToItem(at: IndexPath(row: index, section: 0), at: .left, animated: false)
+            self.v.infoCV.scrollToItem(at: IndexPath(row: index, section: 0), at: .bottom, animated: true)
+            self.v.layoutIfNeeded()
         }).disposed(by: disposeBag)
         
         output.state?.map{$0.mapViewMode}
@@ -147,6 +148,7 @@ class OilMapViewController: BaseViewController{
                     guard let self = self else { return }
                     self.v.mapViewMode()
                     self.view.layoutIfNeeded()
+                    
                 }
             }
         }).disposed(by: disposeBag)
@@ -177,6 +179,7 @@ class OilMapViewController: BaseViewController{
         .drive(onNext: { [weak self] page in
             guard let self = self else { return }
             self.setGasStationCamera(index: page)
+            self.v.infoCV.scrollToItem(at: IndexPath(row: page, section: 0), at: .bottom, animated: true)
         }).disposed(by: disposeBag)
         
     }
@@ -194,8 +197,6 @@ extension OilMapViewController{
         v.mapView.mapView.addCameraDelegate(delegate: mapDelegate)
         mapDelegate.mapDidTap = mapTouched
         mapDelegate.clusterMode = clusterMode
-        
-        
         
     }
     
