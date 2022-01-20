@@ -9,6 +9,10 @@ import Foundation
 import UIKit
 import SnapKit
 import Then
+import Charts
+import Tabman
+import Pageboy
+
 
 class HomeView: BaseView{
 
@@ -17,11 +21,12 @@ class HomeView: BaseView{
     override func setup() {
         super.setup()
         backgroundColor = CustomColor.oilBlue()
-        
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         menuCV = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
         addSubViews(menuCV)
+        
         
         menuCV.backgroundColor = CustomColor.oilBlue()
         menuCV.showsHorizontalScrollIndicator = false

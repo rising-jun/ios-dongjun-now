@@ -9,6 +9,7 @@ import Foundation
 import RxSwift
 
 class ReadGasStation{
+    // katec좌표구하기, https://www.opinet.co.kr/api/aroundAll.do?code=&x=375335.4&y=127146&radius=5000&sort=2&prodcd=B027&out=json
     
     var gasListSubject: PublishSubject<[GasStationInfo]>!
     

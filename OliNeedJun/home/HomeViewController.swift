@@ -46,9 +46,7 @@ class HomeViewController: BaseViewController{
             self.presentViewController(presentVC: presentVC)
         }).disposed(by: disposeBag)
         
-        
     }
-    
 
 }
 
