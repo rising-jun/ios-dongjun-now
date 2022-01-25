@@ -84,9 +84,6 @@ final class LoginViewModel: ViewModelType{
         return output!
     }
     
-        
-    
-    
 }
 
 extension LoginViewModel{

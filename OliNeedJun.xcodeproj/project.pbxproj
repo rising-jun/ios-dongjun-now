@@ -18,6 +18,7 @@
 		72361B392778977F002A0D5E /* CustomOverlayDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72361B382778977F002A0D5E /* CustomOverlayDataSource.swift */; };
 		7239E0552778785700D463C1 /* PermisisionCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7239E0542778785700D463C1 /* PermisisionCheck.swift */; };
 		7239E05727787DE300D463C1 /* SeoulLocation.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 7239E05627787DE300D463C1 /* SeoulLocation.gpx */; };
+		724701A0279BF801008A5956 /* ConvertCoordi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7247019F279BF801008A5956 /* ConvertCoordi.swift */; };
 		726A1C10279ABAD6009D449B /* GasAverageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726A1C0F279ABAD6009D449B /* GasAverageModel.swift */; };
 		726A1C12279ABB71009D449B /* GasInfoAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726A1C11279ABB71009D449B /* GasInfoAPI.swift */; };
 		726BF7DB27895EE90015983F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 726BF7DA27895EE90015983F /* LoginView.swift */; };
@@ -54,6 +55,7 @@
 		72361B382778977F002A0D5E /* CustomOverlayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomOverlayDataSource.swift; sourceTree = "<group>"; };
 		7239E0542778785700D463C1 /* PermisisionCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PermisisionCheck.swift; sourceTree = "<group>"; };
 		7239E05627787DE300D463C1 /* SeoulLocation.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = SeoulLocation.gpx; path = ../AccountBook/SeoulLocation.gpx; sourceTree = "<group>"; };
+		7247019F279BF801008A5956 /* ConvertCoordi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertCoordi.swift; sourceTree = "<group>"; };
 		726A1C0F279ABAD6009D449B /* GasAverageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasAverageModel.swift; sourceTree = "<group>"; };
 		726A1C11279ABB71009D449B /* GasInfoAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GasInfoAPI.swift; sourceTree = "<group>"; };
 		726BF7DA27895EE90015983F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,14 @@
 			path = permission;
 			sourceTree = "<group>";
 		};
+		7247019E279BF739008A5956 /* katec */ = {
+			isa = PBXGroup;
+			children = (
+				7247019F279BF801008A5956 /* ConvertCoordi.swift */,
+			);
+			path = katec;
+			sourceTree = "<group>";
+		};
 		726BF7D927895ECD0015983F /* login */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,6 +159,7 @@
 		728C634927799E00003DDC4C /* data */ = {
 			isa = PBXGroup;
 			children = (
+				7247019E279BF739008A5956 /* katec */,
 				728C634A27799F0D003DDC4C /* ReadGasStation.swift */,
 				726A1C0F279ABAD6009D449B /* GasAverageModel.swift */,
 				726A1C11279ABB71009D449B /* GasInfoAPI.swift */,
@@ -391,6 +402,7 @@
 				72E6F0EF2780568500C71B41 /* GasStationMarker.swift in Sources */,
 				72A74E9B2784808300E388BD /* InfoCollectionDelegate.swift in Sources */,
 				7200642B27785E2B00F27698 /* OilMapView.swift in Sources */,
+				724701A0279BF801008A5956 /* ConvertCoordi.swift in Sources */,
 				729C8AE62792B37C003A60AF /* HomeView.swift in Sources */,
 				720064222778593300F27698 /* SplashViewModel.swift in Sources */,
 				7200642D27785E4C00F27698 /* OilMapViewModel.swift in Sources */,

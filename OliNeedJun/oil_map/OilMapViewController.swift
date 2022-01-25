@@ -157,7 +157,12 @@ class OilMapViewController: BaseViewController{
         .drive(onNext: { [weak self] coordi in
             guard let self = self else { return }
             if let coor = coordi{
-                
+                print(" \(coor.latitude) \(coor.longitude)")
+                let latLng = NMGLatLng(lat: coor.latitude, lng: coor.longitude)
+                var tm = NMGTm128(from: latLng)
+                var a = GeoConverter().convert(sourceType: .TM, destinationType: .KATEC, geoPoint: GeographicPoint(x: tm.x, y: tm.y))
+                print("utmk \(tm.x) \(tm.y)")
+                print("a \(a?.x) \(a?.y)")
             }
             
         }).disposed(by: disposeBag)
@@ -290,7 +295,7 @@ extension OilMapViewController: LocationPermissionCallback{
     }
     
     func getPoint(coordinate: CLLocationCoordinate2D) {
-        
+        coordiSubject.onNext(coordinate)
     }
     
     

@@ -80,6 +80,7 @@ class LoginViewController: BaseViewController{
         .drive(onNext: { [weak self]  _ in
             guard let self = self else { return }
             self.timer.dispose()
+            
         }).disposed(by: disposeBag)
         
         output.state?.map{$0.presentVC ?? .login}
